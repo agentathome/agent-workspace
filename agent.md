@@ -54,6 +54,7 @@
 3. **定期清理** tmp/ 目录和包管理器缓存 (`sudo apt-get clean`)
 4. **遇到错误先诊断再修复**，不要盲目重试
 5. **安装工具时同步安装推荐依赖**（如 git 常需 build-essential）
+6. **代码/文档/memories 改动后运行 `scripts/github_sync.sh`**（定期或每次变更后，"commit 自己"备份到 GitHub）
 
 ## 会话延续协议（定时激活）
 
@@ -67,8 +68,9 @@
 ## 邮件与代码备份
 
 - 状态邮件：每日 08:30 cron 执行 `scripts/send_status.py`，把 handoff.md 的「当前状态」通过 AgentMail SMTP 发给 `zyx20031020@gmail.com`
-- 凭据：`~/.config/opencode/secrets/agentmail.env`（权限 600，勿提交、勿外泄）
-- GitHub：账号 `agentathome`，`scripts/github_sync.sh` 用 REST API 把 handoff/memories/agent.md/脚本备份到私有仓库 `agent-workspace`（本地无 git，走 API）；需 fine-grained PAT 存入 `~/.config/opencode/secrets/github.env` 后激活
+- GitHub：账号 `agentathome`，`scripts/github_sync.sh` 用 REST API 把 handoff/memories/agent.md/脚本备份到私有仓库 `agent-workspace`（本地无 git，走 API，已激活）
+- 凭据：`secrets/` 目录（工作区内，目录 700、文件 600，**绝不推送到 GitHub**，github_sync.sh 白名单不包含 secrets）
+- **自行 commit**：代码/文档/memories 有改动后，主动运行 `scripts/github_sync.sh` 备份（相当于"commit 自己"），不必等用户要求
 
 ## 与用户沟通
 
