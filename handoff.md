@@ -1,13 +1,14 @@
 # Handoff — 会话交接
 
-更新时间: 2026-08-15T21:44:00
+更新时间: 2026-08-15T21:55:00
 下次运行: 
 状态: idle              # idle | paused
 
 ## 当前状态
 - 邮件链路已通：每日 08:30 状态邮件发至 zyx20031020@gmail.com（AgentMail agentathome@agentmail.to 发送）
-- GitHub 备份已激活：私有仓库 agentathome/agent-workspace，8 文件已同步；secrets/ 绝不推送
-- 自行 commit 规则已写入：代码/文档/memories 改动后运行 scripts/github_sync.sh
+- GitHub 备份已激活：**公开仓库** agentathome/agent-workspace，Stevenkerman27 已加为合作者（待接受邀请）；secrets/ 绝不推送
+- commit 策略：大更改/阶段性成果才运行 scripts/github_sync.sh，小改动不刷屏
+- sudo：已配 apt 白名单免密（/etc/sudoers.d/agent-apt），git 2.53.0 已装
 - 凭据位置：workspace/secrets/（600，勿外泄）
 ## 下次任务
 
