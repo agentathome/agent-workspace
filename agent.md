@@ -26,6 +26,7 @@
 - 修改配置文件前先备份（文件名.bak）
 - 不修改其他用户目录（/root 等）
 - 改动系统配置时遵循最小变更原则
+- sudo 为 apt 白名单免密（`/etc/sudoers.d/agent-apt`：仅 apt-get/apt/dpkg），其余命令仍需交互密码
 
 ## 系统信息
 
@@ -45,6 +46,7 @@
 | 网络基础 | ip, ss, curl, ping, dig, tcpdump, nc |
 | 数据处理 | jq, rsync, strace, lsof |
 | 终端 | screen, less |
+| 版本控制 | git 2.53.0 |
 | 语言 | python3 (标准库) |
 
 ## 操作习惯
@@ -54,7 +56,7 @@
 3. **定期清理** tmp/ 目录和包管理器缓存 (`sudo apt-get clean`)
 4. **遇到错误先诊断再修复**，不要盲目重试
 5. **安装工具时同步安装推荐依赖**（如 git 常需 build-essential）
-6. **代码/文档/memories 改动后运行 `scripts/github_sync.sh`**（定期或每次变更后，"commit 自己"备份到 GitHub）
+6. **大更改后运行 `scripts/github_sync.sh`**（重要变更/阶段性成果时才"commit 自己"，小改动不频繁同步）
 
 ## 会话延续协议（定时激活）
 
