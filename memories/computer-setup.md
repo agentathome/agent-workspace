@@ -33,8 +33,9 @@
 - 网络：ip, ss, curl, ping, dig, tcpdump, nc, ncat
 - 系统：jq, rsync, strace, lsof, screen, less
 - 语言：python3
+- 版本控制：git 2.53.0
 - 包管理：apt
 
 ## Sudo 状态
-- 当前：需交互式密码认证
-- 目标：配置免密 sudo（见 agent.md 中的执行协议）
+- 已配置 apt 白名单免密：`/etc/sudoers.d/agent-apt` 放行 `/usr/bin/apt-get, /usr/bin/apt, /usr/bin/dpkg`
+- 其余 sudo 命令仍需交互式密码认证
