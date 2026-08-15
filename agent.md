@@ -70,7 +70,7 @@
 ## 邮件与代码备份
 
 - 状态邮件：每日 08:30 cron 执行 `scripts/send_status.py`，把 handoff.md 的「当前状态」通过 AgentMail SMTP 发给 `zyx20031020@gmail.com`
-- GitHub：账号 `agentathome`，`scripts/github_sync.sh` 用 REST API 把 handoff/memories/agent.md/脚本备份到私有仓库 `agent-workspace`（git 2.53.0 已装，同步脚本走 API，已激活）
+- GitHub：账号 `agentathome`，工作区即为 git 仓库，`scripts/github_sync.sh`（git 封装）把 handoff/memories/agent.md/脚本备份到私有仓库 `agent-workspace`（git 2.53.0 已装）
 - 凭据：`secrets/` 目录（工作区内，目录 700、文件 600，**绝不推送到 GitHub**，github_sync.sh 白名单不包含 secrets）
 - **自行 commit**：代码/文档/memories 有改动后，主动运行 `scripts/github_sync.sh` 备份（相当于"commit 自己"），不必等用户要求
 

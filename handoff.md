@@ -1,10 +1,11 @@
 # Handoff — 会话交接
 
-更新时间: 2026-08-15T23:00:00
+更新时间: 2026-08-15T23:10:00
 下次运行: 
 状态: idle              # idle | paused
 
 ## 当前状态
+- GitHub 备份已改为**直接 git**：工作区即 git 仓库(main)，remote=agentathome/agent-workspace，凭据存 secrets/git-credentials(600)，secrets/tmp/logs 由 .gitignore 排除；github_sync.sh 改为 git 封装
 - WireGuard VPN 已部署并验证通过：外部设备握手成功（endpoint 36.28.4.138:58123），服务端开机自启，详见 memories/computer-setup.md
 - 每日状态邮件现包含公网 IP（send_status.py 顶部，多服务源容错）
 - 默认模型已改为 opencode/deepseek-v4-flash-free（OpenCode Zen 免费），交互与定时会话一致

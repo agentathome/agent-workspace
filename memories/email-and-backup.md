@@ -10,8 +10,9 @@
 
 ## GitHub 备份
 - 账号：`agentathome`（2026-08-15 创建，密码认证已被 GitHub 停用，用 fine-grained PAT）
-- `scripts/github_sync.sh`：REST API 把 handoff.md/agent.md/memories/脚本 备份到私有仓库 `agent-workspace`（git 已装，但同步脚本仍走 contents API，**已激活**，文件已同步）
-- 凭据：`secrets/github.env` 的 GITHUB_TOKEN（600，工作区内）
+- 方式：**工作区即为 git 仓库**（main），远端 `https://github.com/agentathome/agent-workspace.git`，用 git 直接 add/commit/push
+- `scripts/github_sync.sh`：git 封装脚本（`git add -A && commit && push`），沿用"commit 自己"习惯
+- 凭据：git credential store 指向 `secrets/git-credentials`（600，工作区内），`secrets/`、`tmp/`、`logs/` 由 `.gitignore` 排除，绝不推送
 
 ## 自行 commit 规则
 - **大更改/阶段性成果后才运行 `scripts/github_sync.sh`** 备份到 GitHub（相当于"commit 自己"）
