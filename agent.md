@@ -56,7 +56,7 @@
 3. **定期清理** tmp/ 目录和包管理器缓存 (`sudo apt-get clean`)
 4. **遇到错误先诊断再修复**，不要盲目重试
 5. **安装工具时同步安装推荐依赖**（如 git 常需 build-essential）
-6. **大更改后运行 `scripts/github_sync.sh`**（重要变更/阶段性成果时才"commit 自己"，小改动不频繁同步）
+6. **大更改后运行 git 直接备份**（重要变更/阶段性成果时才"commit 自己"，小改动不频繁同步）
 
 ## 会话延续协议（定时激活）
 
@@ -70,7 +70,7 @@
 ## 邮件与代码备份
 
 - 状态邮件：每日 08:30 cron 执行 `scripts/send_status.py`，把 handoff.md 的「当前状态」通过 AgentMail SMTP 发给 `zyx20031020@gmail.com`
-- GitHub：账号 `agentathome`，工作区即为 git 仓库，`scripts/github_sync.sh`（git 封装）把 handoff/memories/agent.md/脚本备份到私有仓库 `agent-workspace`（git 2.53.0 已装）
+- GitHub：账号 `agentathome`，工作区即为 git 仓库（main），用 `git add -A && git commit -m "..." && git push` 直接备份到私有仓库 `agent-workspace`（git 2.53.0 已装）
 - 凭据：`secrets/` 目录（工作区内，目录 700、文件 600，**绝不推送到 GitHub**，github_sync.sh 白名单不包含 secrets）
 - **自行 commit**：代码/文档/memories 有改动后，主动运行 `scripts/github_sync.sh` 备份（相当于"commit 自己"），不必等用户要求
 
