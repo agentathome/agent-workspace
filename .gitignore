@@ -1,0 +1,14 @@
+# 凭据与敏感文件——绝不推送
+secrets/
+*.key
+*.env
+
+# 临时与日志
+tmp/
+logs/
+__pycache__/
+*.pyc
+
+# 系统与编辑器
+.DS_Store
+*.swp
