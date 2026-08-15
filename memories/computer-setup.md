@@ -18,7 +18,8 @@
 
 ## 工作区
 - 目录：`/home/home/workspace/`
-- 子目录：`projects/`, `scripts/`, `memories/`, `tmp/`
+- 子目录：`projects/`, `scripts/`, `memories/`, `tmp/`, `logs/`, `secrets/`
+- secrets/ 存凭据（agentmail.env、github.env），目录 700 文件 600，绝不推送 GitHub
 - opencode 数据：`/home/home/.local/share/opencode/opencode.db`
 - agent 意图：`/home/home/workspace/agent.md`
 
