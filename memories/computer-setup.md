@@ -3,6 +3,16 @@
 记录于：2026-08-15
 更新于：2026-08-15
 
+## WireGuard VPN（服务端）
+- 已部署：本机为服务端，`/etc/wireguard/wg0.conf`，`systemctl enable wg-quick@wg0` 开机自启
+- 监听：UDP 51820（IPv4/IPv6），路由器已端口转发 → 192.168.0.116
+- VPN 网段：10.0.0.0/24（服务端 10.0.0.1，客户端 10.0.0.2）
+- IP 转发已开（/etc/sysctl.d/99-wireguard.conf），NAT 由 wg0.conf 的 PostUp/PreDown 管理
+- 客户端配置：workspace/secrets/wireguard/client.conf（含二维码 client-qr.png，600）
+- 端点用公网 IP 36.24.251.10（可能变化，建议 DDNS）
+- 查看状态：`sudo wg show`
+- 主网卡为 enx000ec65c1161（以太网），wlan0 备用
+
 ## 系统信息
 - 平台：Linux (Ubuntu 26.04 LTS, 内核 7.0.0-29-generic)
 - 机型：Lenovo YOGA 720
