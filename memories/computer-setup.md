@@ -22,6 +22,7 @@
 - secrets/ 存凭据（agentmail.env、github.env），目录 700 文件 600，绝不推送 GitHub
 - opencode 数据：`/home/home/.local/share/opencode/opencode.db`
 - agent 意图：`/home/home/workspace/agent.md`
+- opencode 默认模型：`opencode/deepseek-v4-flash-free`（OpenCode Zen 免费，`~/.config/opencode/opencode.jsonc`）
 
 ## 资源约束
 - ⚠️ RAM 较小（3.2G，可用约 1.5G）
