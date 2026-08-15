@@ -14,6 +14,6 @@
 - 凭据：`secrets/github.env` 的 GITHUB_TOKEN（600，工作区内）
 
 ## 自行 commit 规则
-- **定期**或**代码/文档/memories 每次改动后**，主动运行 `scripts/github_sync.sh` 备份到 GitHub（相当于"commit 自己"）
-- 无需等用户要求；会话结束前若工作区有变化也应同步
+- **大更改/阶段性成果后才运行 `scripts/github_sync.sh`** 备份到 GitHub（相当于"commit 自己"）
+- 小改动不频繁同步，避免刷屏式提交
 - secrets/ 绝不推送（脚本白名单已排除）
