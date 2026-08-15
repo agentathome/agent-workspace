@@ -1,10 +1,11 @@
 # Handoff — 会话交接
 
-更新时间: 2026-08-15T21:55:00
+更新时间: 2026-08-15T22:20:00
 下次运行: 
 状态: idle              # idle | paused
 
 ## 当前状态
+- 默认模型已改为 opencode/deepseek-v4-flash-free（OpenCode Zen 免费），交互与定时会话一致
 - 邮件链路已通：每日 08:30 状态邮件发至 zyx20031020@gmail.com（AgentMail agentathome@agentmail.to 发送）
 - GitHub 备份已激活：**公开仓库** agentathome/agent-workspace，Stevenkerman27 已加为合作者（待接受邀请）；secrets/ 绝不推送
 - commit 策略：大更改/阶段性成果才运行 scripts/github_sync.sh，小改动不刷屏
