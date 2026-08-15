@@ -15,8 +15,8 @@ import sys
 from datetime import datetime
 from email.mime.text import MIMEText
 
-SECRETS = os.path.join(WORKSPACE, "secrets", "agentmail.env")
 WORKSPACE = "/home/home/workspace"
+SECRETS = os.path.join(WORKSPACE, "secrets", "agentmail.env")
 HANDOFF = os.path.join(WORKSPACE, "handoff.md")
 LOG = os.path.join(WORKSPACE, "logs", "status-mail.log")
 
@@ -34,8 +34,32 @@ def load_env(path):
     return env
 
 
+PUBLIC_IP_SERVICES = (
+    "https://api.ipify.org",
+    "https://ifconfig.me",
+    "https://icanhazip.com",
+)
+
+
+def get_public_ip():
+    import urllib.request
+
+    for url in PUBLIC_IP_SERVICES:
+        try:
+            with urllib.request.urlopen(url, timeout=10) as r:
+                ip = r.read().decode().strip()
+                if ip:
+                    return ip
+        except Exception:
+            continue
+    return None
+
+
 def build_body():
     sections = []
+    ip = get_public_ip()
+    ip_line = f"公网 IP: {ip}" if ip else "公网 IP: （获取失败）"
+    sections.append(ip_line)
     if os.path.exists(HANDOFF):
         text = open(HANDOFF, encoding="utf-8").read()
         for title in ("当前状态", "下次任务", "需要 sudo 的事项"):
