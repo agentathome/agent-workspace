@@ -52,7 +52,7 @@
 ## 操作习惯
 
 1. **执行 sudo 命令前先说一声**（让用户知道我在做什么）
-2. **安装后记录变更**到 `memories/computer-setup.md`
+2. **安装后记录变更**到记忆库（`python3 scripts/mem.py set computer-setup <小节> -c "..."`，存于 memories/memory.db）
 3. **定期清理** tmp/ 目录和包管理器缓存 (`sudo apt-get clean`)
 4. **遇到错误先诊断再修复**，不要盲目重试
 5. **安装工具时同步安装推荐依赖**（如 git 常需 build-essential）
@@ -62,9 +62,9 @@
 
 - 每次会话结束前必须更新 `handoff.md`：更新时间、状态、当前状态、下次任务、下次运行
 - 定时会话由 cron 每分钟检查启动，是与本会话相同的电脑管理 Agent 的新会话，无对话历史
-- 新会话靠 `handoff.md`（状态指针）+ `memories/`（长期事实）恢复上下文，避免上下文随会话增长
+- 新会话靠 `handoff.md`（状态指针）+ 记忆库 `memories/memory.db`（长期事实，用 `scripts/mem.py dump` 阅读）恢复上下文，避免上下文随会话增长
 - 定时循环内只做**不依赖 sudo** 的操作；需要 sudo 的事项写入 `handoff.md` 的"需要 sudo 的事项"，留给交互会话
-- 长期事实沉淀到 `memories/`（保持精简、不重复）；无需继续时清空 `下次运行`
+- 长期事实沉淀到记忆库 `memories/memory.db`（`scripts/mem.py` 读写，保持精简、不重复）；无需继续时清空 `下次运行`
 - 相关脚本：`scripts/check_due.py`、`scripts/run_session.sh`、`scripts/daily_email_session.sh`、`scripts/install_cron.sh`
 
 ## 邮件与代码备份

@@ -9,6 +9,10 @@ logs/
 __pycache__/
 *.pyc
 
+# sqlite WAL 临时文件
+memories/memory.db-wal
+memories/memory.db-shm
+
 # 系统与编辑器
 .DS_Store
 *.swp
