@@ -15,7 +15,7 @@ MAX_RETRY = 3
 
 def read_handoff():
     text = open(HANDOFF, encoding="utf-8").read()
-    m_time = re.search(r"^下次运行:\s*(\S+)", text, re.M)
+    m_time = re.search(r"^下次运行:[ \t]*(\S+)", text, re.M)
     m_status = re.search(r"^状态:\s*(\S+)", text, re.M)
     next_run = m_time.group(1) if m_time else ""
     status = m_status.group(1) if m_status else "idle"

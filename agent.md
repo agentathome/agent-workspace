@@ -37,7 +37,7 @@
 | CPU | Lenovo YOGA 720 |
 | 内存 | 3.2GB (~1.5GB 可用) |
 | 磁盘 | 233GB (209GB 可用) |
-| 网络 | wlan0: 192.168.0.127/24 |
+| 网络 | enx000ec65c1161: 192.168.0.116/24（以太网主用，wlan0 备用） |
 
 ## 已安装的工具
 
@@ -65,14 +65,15 @@
 - 新会话靠 `handoff.md`（状态指针）+ `memories/`（长期事实）恢复上下文，避免上下文随会话增长
 - 定时循环内只做**不依赖 sudo** 的操作；需要 sudo 的事项写入 `handoff.md` 的"需要 sudo 的事项"，留给交互会话
 - 长期事实沉淀到 `memories/`（保持精简、不重复）；无需继续时清空 `下次运行`
-- 相关脚本：`scripts/check_due.py`、`scripts/run_session.sh`、`scripts/install_cron.sh`
+- 相关脚本：`scripts/check_due.py`、`scripts/run_session.sh`、`scripts/daily_email_session.sh`、`scripts/install_cron.sh`
 
 ## 邮件与代码备份
 
-- 状态邮件：每日 08:30 cron 执行 `scripts/send_status.py`，把 handoff.md 的「当前状态」通过 AgentMail SMTP 发给 `zyx20031020@gmail.com`
+- 状态邮件：**会话驱动**。每日 08:30 cron 触发 `scripts/daily_email_session.sh` 启动新会话，由 Agent 做系统检查、更新 handoff.md「当前状态」后，再调用 `scripts/send_status.py` 通过 AgentMail SMTP 发给 `zyx20031020@gmail.com`
+- `send_status.py` 只负责邮件收发（SMTP 客户端），内容与驱动由会话负责
 - GitHub：账号 `agentathome`，工作区即为 git 仓库（main），用 `git add -A && git commit -m "..." && git push` 直接备份到私有仓库 `agent-workspace`（git 2.53.0 已装）
-- 凭据：`secrets/` 目录（工作区内，目录 700、文件 600，**绝不推送到 GitHub**，github_sync.sh 白名单不包含 secrets）
-- **自行 commit**：代码/文档/memories 有改动后，主动运行 `scripts/github_sync.sh` 备份（相当于"commit 自己"），不必等用户要求
+- 凭据：`secrets/` 目录（工作区内，目录 700、文件 600，**绝不推送到 GitHub**，.gitignore 白名单不包含 secrets）
+- **自行 commit**：代码/文档/memories 有改动后，主动 `git add -A && git commit -m "..." && git push` 备份（相当于"commit 自己"），不必等用户要求
 
 ## 与用户沟通
 

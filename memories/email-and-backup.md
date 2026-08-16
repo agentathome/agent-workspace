@@ -4,9 +4,10 @@
 更新于：2026-08-15
 
 ## 状态邮件
-- 每日 08:30 cron：`python3 /home/home/workspace/scripts/send_status.py` → 把 handoff.md「当前状态」发到 `zyx20031020@gmail.com`
+- **会话驱动**：每日 08:30 cron 触发 `scripts/daily_email_session.sh` 启动新会话，Agent 先做系统检查并更新 handoff.md「当前状态」，再调用 `scripts/send_status.py` 发邮件到 `zyx20031020@gmail.com`
+- `send_status.py` 仅负责 SMTP 收发（内容/驱动由会话负责），默认收件人取 `secrets/agentmail.env` 的 `GMAIL_TO`
 - 发送方：AgentMail `agentathome@agentmail.to`（smtp.agentmail.to:465 SSL，用户名=邮箱，密码=API key）
-- 脚本：`scripts/send_status.py`；凭据：`secrets/agentmail.env`（600，工作区内）
+- 凭据：`secrets/agentmail.env`（600，工作区内）；cron 条目由 `scripts/install_cron.sh` 统一管理（旧 `30 8 * * * send_status.py` 条目已移除）
 
 ## GitHub 备份
 - 账号：`agentathome`（2026-08-15 创建，密码认证已被 GitHub 停用，用 fine-grained PAT）
