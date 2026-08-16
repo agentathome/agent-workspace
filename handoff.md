@@ -5,6 +5,7 @@
 状态: idle              # idle | paused
 
 ## 当前状态
+- ⚠️ **git push 待重试**：本地 main 领先 origin 1 个提交（d922cf8，记忆迁移），GitHub 网络暂时连不上，网络恢复后执行 `git push` 即可
 - **记忆已迁移到 SQLite**：memories/*.md 已删除，改存 `memories/memory.db`，读写用 `scripts/mem.py`（dump/list/get/set/search）；README 与各会话 prompt 已同步
 - **每日状态邮件已改为会话驱动**：08:30 cron 触发 `scripts/daily_email_session.sh` 启动新会话，Agent 做系统检查→更新 handoff→调 `send_status.py` 发信；`send_status.py` 只负责 SMTP 收发
 - 修复 `scripts/check_due.py` 正则 bug：`下次运行` 为空时误跨行匹配到「状态:」，导致每分钟刷 `bad next_run`（改 `\s*` 为 `[ \t]*`）
