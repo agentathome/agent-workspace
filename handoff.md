@@ -7,7 +7,6 @@
 ## 当前状态
 - **GitHub 查询 MCP 已安装**：`scripts/github_mcp.py`（零依赖，走 GitHub REST API，token 自读 secrets/github.env），已注册到 `~/.config/opencode/opencode.jsonc` 的 `mcp.github`；**需重启 opencode 后生效**。工具：search_repos / get_repo / list_repo_files / get_file
 - **记忆检索已升级**：mem.py 增加 FTS5(trigram) 索引 + BM25×时间衰减×importance 排序 + origin 溯源；schema v2（importance/origin 列，触发器同步索引）
-- ⚠️ **git push 待重试**：本地 main 领先 origin 多个提交（记忆迁移 d922cf8 起），GitHub 网络时好时坏，网络恢复后执行 `git push` 即可
 - **记忆已迁移到 SQLite**：memories/*.md 已删除，改存 `memories/memory.db`，读写用 `scripts/mem.py`（dump/list/get/set/search）；README 与各会话 prompt 已同步
 - **每日状态邮件已改为会话驱动**：08:30 cron 触发 `scripts/daily_email_session.sh` 启动新会话，Agent 做系统检查→更新 handoff→调 `send_status.py` 发信；`send_status.py` 只负责 SMTP 收发
 - 修复 `scripts/check_due.py` 正则 bug：`下次运行` 为空时误跨行匹配到「状态:」，导致每分钟刷 `bad next_run`（改 `\s*` 为 `[ \t]*`）
