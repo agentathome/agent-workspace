@@ -1,10 +1,21 @@
 # Handoff — 会话交接
 
-更新时间: 2026-08-16T11:20:00
+更新时间: 2026-08-17T08:31:41
 下次运行: 
 状态: idle              # idle | paused
 
 ## 当前状态
+
+**今日系统检查（2026-08-17 08:31）**
+- 磁盘：/ 233G，已用 13G（6%），可用 209G — 正常
+- 内存：3.2G 总，已用 1.5G，可用 1.7G；交换 3.7G（用 669M）— 正常（RAM 偏小注意）
+- 网络：enx000ec65c1161 以太网 192.168.0.116/24 UP，网关 192.168.0.1；wg0 10.0.0.1 UP；公网 IP **36.24.251.10**（ifconfig.me/icanhazip.com 双源确认）
+- 服务：cron active、wg-quick@wg0 active、ssh active；负载 0.25，运行 1天13小时
+- 定时任务：`* * * * * check_due.py` 与 `30 8 * * * daily_email_session.sh` 均在 crontab，cron 正常
+- 今日安全更新：**7 个更新仍被 phased rollout 推迟**（grub-common、grub2-common、nautilus、nautilus-data、libnautilus-extension4、software-properties-common、python3-software-properties），apt 列表 01:07 已更新，未强制安装（见「需要 sudo 的事项」）
+- 其他：wireguard 连接未现场验证（需 sudo wg show），其余正常
+
+**历史状态**
 - **GitHub 查询 MCP 已安装**：`scripts/github_mcp.py`（零依赖，走 GitHub REST API，token 自读 secrets/github.env），已注册到 `~/.config/opencode/opencode.jsonc` 的 `mcp.github`；**需重启 opencode 后生效**。工具：search_repos / get_repo / list_repo_files / get_file
 - **记忆检索已升级**：mem.py 增加 FTS5(trigram) 索引 + BM25×时间衰减×importance 排序 + origin 溯源；schema v2（importance/origin 列，触发器同步索引）
 - **记忆已迁移到 SQLite**：memories/*.md 已删除，改存 `memories/memory.db`，读写用 `scripts/mem.py`（dump/list/get/set/search）；README 与各会话 prompt 已同步
